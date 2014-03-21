@@ -20,7 +20,7 @@ import android.widget.RelativeLayout;
  * Superclass that all views that can be hidden / shown or dragged inherit from.
  * 
  * IMPORTANT: Parent layout (layout that contains the view) needs to be a
- * RelativeLayout or a FrameLayout
+ * RelativeLayout, FrameLayout or LinearLayout
  * 
  * @author Philipp Jahoda
  */
