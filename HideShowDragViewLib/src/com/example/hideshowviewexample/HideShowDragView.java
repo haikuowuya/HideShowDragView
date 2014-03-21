@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -433,6 +434,13 @@ public abstract class HideShowDragView extends FrameLayout {
 
                     mOffsetX = ev.getRawX() - params.leftMargin;
                     mOffsetY = ev.getRawY() - params.topMargin;
+                    
+                } else if (getLayoutParams() instanceof LinearLayout.LayoutParams) {
+                    
+                    LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) getLayoutParams();
+
+                    mOffsetX = ev.getRawX() - params.leftMargin;
+                    mOffsetY = ev.getRawY() - params.topMargin;
                 }
 
                 break;
@@ -451,6 +459,14 @@ public abstract class HideShowDragView extends FrameLayout {
                 } else if (getLayoutParams() instanceof RelativeLayout.LayoutParams) {
 
                     RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) getLayoutParams();
+
+                    params.setMargins((int) (ev.getRawX() - mOffsetX),
+                            (int) (ev.getRawY() - mOffsetY), 0, 0);
+                    setLayoutParams(params);
+                    
+                } else if (getLayoutParams() instanceof LinearLayout.LayoutParams) {
+                    
+                    LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) getLayoutParams();
 
                     params.setMargins((int) (ev.getRawX() - mOffsetX),
                             (int) (ev.getRawY() - mOffsetY), 0, 0);
