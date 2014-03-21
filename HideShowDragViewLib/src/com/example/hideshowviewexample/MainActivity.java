@@ -11,7 +11,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.hideshowviewexample.HideShowView.HideShowListener;
+import com.example.hideshowviewexample.HideShowDragView.HideShowListener;
 
 public class MainActivity extends Activity implements OnClickListener, HideShowListener {
 
@@ -68,13 +68,13 @@ public class MainActivity extends Activity implements OnClickListener, HideShowL
     }
 
     @Override
-    public void onHide(HideShowView v, float curX, float curY) {
+    public void onHide(HideShowDragView v, float curX, float curY) {
         Log.i("HideCompleted", "x: " + curX + ", y: " + curY);
         myView.setText("Shown: " + v.isShown());
     }
 
     @Override
-    public void onShow(HideShowView v, float curX, float curY) {   
+    public void onShow(HideShowDragView v, float curX, float curY) {   
         Log.i("ShowCompleted", "x: " + curX + ", y: " + curY);
         myView.setText("Shown: " + v.isShown());
     }

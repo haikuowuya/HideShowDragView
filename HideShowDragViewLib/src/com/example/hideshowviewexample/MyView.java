@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
-public class MyView extends HideShowView {
+public class MyView extends HideShowDragView {
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
