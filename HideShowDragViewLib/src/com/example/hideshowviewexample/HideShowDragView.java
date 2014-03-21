@@ -11,10 +11,12 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Superclass that all views that can be hidden / shown or dragged inherit from.
@@ -44,7 +46,7 @@ public abstract class HideShowDragView extends FrameLayout {
     private int mHideShowDuration = 500;
 
     /** listener for the hiding and showing process */
-    private HideShowListener mListener;
+    private HideShowDragListener mListener;
 
     /**
      * if set to true, the view will acutally be made invisible once the hiding
@@ -130,7 +132,7 @@ public abstract class HideShowDragView extends FrameLayout {
      * 
      * @param l
      */
-    public void setHideShowListener(HideShowListener l) {
+    public void setHideShowListener(HideShowDragListener l) {
         this.mListener = l;
     }
 
@@ -409,6 +411,7 @@ public abstract class HideShowDragView extends FrameLayout {
 
     /** distance between the dragging finger and the top edge of the view */
     private float mOffsetY = 0;
+    
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -427,6 +430,8 @@ public abstract class HideShowDragView extends FrameLayout {
 
                     mOffsetX = ev.getRawX() - params.leftMargin;
                     mOffsetY = ev.getRawY() - params.topMargin;
+                    
+                    if(mListener != null) mListener.onDragStart(this, params.leftMargin, params.topMargin);
 
                 } else if (getLayoutParams() instanceof RelativeLayout.LayoutParams) {
 
@@ -435,13 +440,17 @@ public abstract class HideShowDragView extends FrameLayout {
                     mOffsetX = ev.getRawX() - params.leftMargin;
                     mOffsetY = ev.getRawY() - params.topMargin;
                     
+                    if(mListener != null) mListener.onDragStart(this, params.leftMargin, params.topMargin);
+                    
                 } else if (getLayoutParams() instanceof LinearLayout.LayoutParams) {
                     
                     LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) getLayoutParams();
 
                     mOffsetX = ev.getRawX() - params.leftMargin;
                     mOffsetY = ev.getRawY() - params.topMargin;
-                }
+                    
+                    if(mListener != null) mListener.onDragStart(this, params.leftMargin, params.topMargin);
+                }              
 
                 break;
             }
@@ -494,6 +503,9 @@ public abstract class HideShowDragView extends FrameLayout {
                     mHideX = loc[0];
                     mHideY = loc[1];
                 }
+                
+                if(mListener != null) mListener.onDragFinished(this, loc[0], loc[1]);
+
                 break;
             }
         }
@@ -558,7 +570,7 @@ public abstract class HideShowDragView extends FrameLayout {
      * 
      * @author Philipp Jahoda
      */
-    public interface HideShowListener {
+    public interface HideShowDragListener {
 
         /**
          * called when the hiding animation of the view has finished
@@ -577,5 +589,21 @@ public abstract class HideShowDragView extends FrameLayout {
          * @param curY
          */
         public void onShow(HideShowDragView v, float curX, float curY);
+        
+        /**
+         * called when the dragging of the view is started
+         * @param v
+         * @param startX
+         * @param startY
+         */
+        public void onDragStart(HideShowDragView v, float startX, float startY);
+        
+        /**
+         * called when the dragging of the view is stopped (when the view is dropped)
+         * @param v
+         * @param stopX
+         * @param stopY
+         */
+        public void onDragFinished(HideShowDragView v, float stopX, float stopY);
     }
 }

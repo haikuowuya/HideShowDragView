@@ -10,10 +10,11 @@ import android.view.View.OnClickListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.example.hideshowviewexample.HideShowDragView.HideShowListener;
+import com.example.hideshowviewexample.HideShowDragView.HideShowDragListener;
 
-public class MainActivity extends Activity implements OnClickListener, HideShowListener {
+public class MainActivity extends Activity implements OnClickListener, HideShowDragListener {
 
     private EditText etX, etY;
     private MyView myView;
@@ -42,7 +43,7 @@ public class MainActivity extends Activity implements OnClickListener, HideShowL
         
         myView.setHideShowListener(this);
         
-        myView.setDragEnabled(true);
+        myView.setDragEnabled(false);
         
         myView.setShowInterpolator(new DecelerateInterpolator(0.5f));
         
@@ -77,5 +78,17 @@ public class MainActivity extends Activity implements OnClickListener, HideShowL
     public void onShow(HideShowDragView v, float curX, float curY) {   
         Log.i("ShowCompleted", "x: " + curX + ", y: " + curY);
         myView.setText("Shown: " + v.isShown());
+    }
+    
+    @Override
+    public void onDragStart(HideShowDragView v, float startX, float startY) {
+       
+        Toast.makeText(getApplicationContext(), "DragStart. x: " + startX + ", y: " + startY, Toast.LENGTH_SHORT).show();
+    }
+    
+    @Override
+    public void onDragFinished(HideShowDragView v, float stopX, float stopY) {
+        
+        Toast.makeText(getApplicationContext(), "DragStop. x: " + stopX + ", y: " + stopY, Toast.LENGTH_SHORT).show();
     }
 }
