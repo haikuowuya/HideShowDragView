@@ -3,6 +3,12 @@ HideShowDragView
 
 A simple lightweight Android **custom-view** that supports a hide and show **animation** to a user specified position, as well as **dragging**.
 
+Features:
+
+- Animation between two positions (hide / show)
+- Dragging and Dropping
+- Fully customizable
+
 
 Usage
 =====
