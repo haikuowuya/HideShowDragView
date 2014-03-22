@@ -8,7 +8,7 @@ Usage
 =====
 
 Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with the constructor you need
-    ´´´java
+```java
     public class CustomView extends HideShowDragView {
             
         public CustomView(Context context) {
@@ -30,11 +30,12 @@ Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with
         
         // ...
     }
-    ´´´
+```   
     
     
 Define your <code>CustomView</code> in <code>.xml</code> (supported container layouts are <code>FrameLayout</code>, <code>RelativeLayout</code> and <code>LinearLayout</code>)
 
+```xml
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -45,19 +46,24 @@ Define your <code>CustomView</code> in <code>.xml</code> (supported container la
             android:layout_height="90dp" >
         </your.package.CustomView>
     </FrameLayout>
-    
+```    
 
 Initialize it from .xml (when defined in .xml):
 
+```java
     CustomView hideShowView = (CustomView) findViewById(R.id.customView);
+```
     
 Initialize a new CustomView:
 
+```java
     CustomView hideShowView = new CustomView(Context);
+```
     
 
 Inside your <code>Activity</code> or <code>Fragment</code>, use the <code>HideShowDragListener</code> to react to state changes and setup all parameters for your View:
 
+```java
     public class YourActivity extemds Activity implements HideShowDragListener {
 
         @Override
@@ -96,3 +102,4 @@ Inside your <code>Activity</code> or <code>Fragment</code>, use the <code>HideSh
         
         }
     }
+```
