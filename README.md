@@ -8,7 +8,7 @@ Usage
 =====
 
 Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with the constructor you need
-    
+    ´´´java
     public class CustomView extends HideShowDragView {
             
         public CustomView(Context context) {
@@ -30,6 +30,7 @@ Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with
         
         // ...
     }
+    ´´´
     
     
 Define your <code>CustomView</code> in <code>.xml</code> (supported container layouts are <code>FrameLayout</code>, <code>RelativeLayout</code> and <code>LinearLayout</code>)
