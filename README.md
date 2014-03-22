@@ -1,11 +1,13 @@
 HideShowDragView
 ================
 
-A simple lightweight Android custom-view that supports a hide and show animation to a user specified position, as well as dragging.
+A simple lightweight Android **custom-view** that supports a hide and show **animation** to a user specified position, as well as **dragging**.
 
 
 Usage
 =====
+
+Simply **copy the HideShowDragView.java** file into your project.
 
 Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with the constructor you need
 ```java
