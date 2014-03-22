@@ -8,7 +8,7 @@ Usage
 =====
 
 Create a CustomView that extends 'HideShowDragView' with the constructor you need
-
+    java
     public class CustomView extends HideShowDragView {
             
         public CustomView(Context context) {
