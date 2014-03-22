@@ -83,6 +83,12 @@ Inside your <code>Activity</code> or <code>Fragment</code>, use the <code>HideSh
             CustomView hideShowView = (CustomView) findViewById(R.id.customView);
             hideShowView.setHideShowListener(this);
             
+            // alternative 1: set the position to which the view should animate from its current position
+            hideShowView.setPosition(500, 500);
+            // OR:
+            // alternative 2: set the positions between the view should animate
+            hideShowView.setPositions(0, 0, 500, 500);
+            
             // setup other stuff ...
             hideShowView.makeInvisibleOnHide(false);
         
