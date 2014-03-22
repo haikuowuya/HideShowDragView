@@ -7,8 +7,8 @@ A simple lightweight Android custom-view that supports a hide and show animation
 Usage
 =====
 
-Create a CustomView that extends 'HideShowDragView' with the constructor you need
-    java
+Create a <code>CustomView</code> that extends <code>HideShowDragView</code> with the constructor you need
+    
     public class CustomView extends HideShowDragView {
             
         public CustomView(Context context) {
@@ -32,7 +32,7 @@ Create a CustomView that extends 'HideShowDragView' with the constructor you nee
     }
     
     
-Define your CustomView in .xml (supported container layouts are FrameLayout, RelativeLayout and LinearLayout)
+Define your <code>CustomView</code> in <code>.xml</code> (supported container layouts are <code>FrameLayout</code>, <code>RelativeLayout</code> and <code>LinearLayout</code>)
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -55,8 +55,7 @@ Initialize a new CustomView:
     CustomView hideShowView = new CustomView(Context);
     
 
-Inside your Activity or Fragment, use the HideShowDragListener to react to state changes and
-setup all parameters for your View:
+Inside your <code>Activity</code> or <code>Fragment</code>, use the <code>HideShowDragListener</code> to react to state changes and setup all parameters for your View:
 
     public class YourActivity extemds Activity implements HideShowDragListener {
 
